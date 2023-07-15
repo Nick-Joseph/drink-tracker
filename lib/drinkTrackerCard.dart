@@ -1,4 +1,7 @@
+import 'package:drink_tracker/bloc/waterintake_bloc.dart';
+import 'package:drink_tracker/bloc/waterintake_event.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:percent_indicator/percent_indicator.dart';
 
@@ -65,9 +68,11 @@ class _WaterIntakeCardState extends State<WaterIntakeCard> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 FloatingActionButton(
-                  onPressed: _incrementWaterIntake,
+                  onPressed: ()=> context.read<WaterIntakeBloc>().add(OuncesIncrease()),
                   tooltip: 'Increment',
                   child: Icon(Icons.add),
+                  
+                  
                 ),
                 SizedBox(width: 16.0),
                 FloatingActionButton(
