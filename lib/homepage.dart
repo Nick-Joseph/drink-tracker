@@ -1,9 +1,7 @@
-import 'package:drink_tracker/drinkTrackerCard.dart';
-import 'package:drink_tracker/widgets/customNavBar.dart';
+import 'package:drink_tracker/assets/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
 
-import 'widgets/customAppbar.dart';
+import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({
@@ -18,32 +16,42 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppbar(),
-      body: Column(
-        children: [
-          Row(
-            children: [
-              Expanded(
-                child: Container(
-                  color: Color(0xff23A0FA),
-                  child: CircularPercentIndicator(
-                    animation: true,
-                    radius: 60.0,
-                    lineWidth: 10.0,
-                    percent: .70,
-                    center: Text("70%"),
-                    progressColor: Color(0xff003CBF),
-                  ),
-                ),
-              ),
-            ],
+      appBar: AppBar(
+        elevation: 0,
+        leading: Text(monthAndYear,style: TextStyle(fontSize: 14),),
+        backgroundColor: backColor,
+        actions: [
+          IconButton(
+            onPressed: null,
+            icon: const Icon(
+              Icons.settings,
+              color: primaryColor,
+              size: appBarIconSize,
+            ),
           ),
-          Center(
-            child: WaterIntakeCard(),
+          IconButton(
+            onPressed: null,
+            icon: const Icon(
+              Icons.settings,
+              color: primaryColor,
+              size: appBarIconSize,
+            ),
+          ),
+          IconButton(
+            onPressed: null,
+            icon: const Icon(
+              Icons.settings,
+              color: primaryColor,
+              size: appBarIconSize,
+            ),
           )
         ],
       ),
-      bottomNavigationBar: CustomNavBar(),
+      body: SafeArea(
+        child: SfCalendar(
+          view: CalendarView.week,
+        ),
+      ),
     );
   }
 }
